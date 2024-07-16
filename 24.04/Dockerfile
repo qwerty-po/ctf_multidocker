@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
     netcat-traditional \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --upgrade pip
+RUN python3 -m pip config set global.break-system-packages true
 RUN pip3 install pwntools
 
 # download onegadget, ropgadget, seccomp-tools
