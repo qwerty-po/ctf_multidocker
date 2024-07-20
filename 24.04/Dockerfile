@@ -43,8 +43,12 @@ RUN gem install one_gadget
 RUN python3 -m pip install ROPgadget
 RUN gem install seccomp-tools
 
+# change ubuntu uid & gid
+RUN usermod -u 1001 ubuntu && groupmod -g 1001 ubuntu
+
 # add user qwerty
 RUN adduser qwerty
+RUN usermod -u 1000 qwerty && groupmod -g 1000 qwerty
 
 # install rp++
 RUN wget https://github.com/0vercl0k/rp/releases/download/v1/rp-lin-x86 -O /home/qwerty/rp86
