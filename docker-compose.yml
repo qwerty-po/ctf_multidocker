@@ -20,7 +20,7 @@ services:
       context: ./22.04
       
     volumes:
-      - ./ctf:/home/qwerty/ctf
+      - /home/qwerty/ctf:/home/qwerty/ctf
 
     ports:
       - "22022:22"
