@@ -2,21 +2,32 @@ services:
   docker_24.04:
     build:
       context: ./24.04
+
     volumes:
       - /home/qwerty/ctf:/home/qwerty/ctf
+
     ports:
       - "24022:22"
       - "24080:80"
       - "24443:443"
+
+    privileged: true 
+
     entrypoint: ["tail", "-f", "/dev/null"]
 
   docker_22.04:
     build:
       context: ./22.04
+      
     volumes:
-      - /home/qwerty/ctf:/home/qwerty/ctf
+      - ./ctf:/home/qwerty/ctf
+
     ports:
       - "22022:22"
       - "22080:80"
       - "22443:443"
+
+    privileged: true 
+
     entrypoint: ["tail", "-f", "/dev/null"]
+  
