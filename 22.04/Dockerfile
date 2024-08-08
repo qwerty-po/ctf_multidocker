@@ -64,8 +64,20 @@ RUN cp -r /usr/src/glibc/source/glibc-2.??/* /usr/src/glibc/source
 
 RUN echo "dir /usr/src/glibc/source" >> /home/qwerty/.gdbinit
 
+# set .gdbinit as qwerty perm
+RUN chown qwerty:qwerty /home/qwerty/.gdbinit
+
 # set default user
 USER qwerty
+
+# work at home folder
+WORKDIR /home/qwerty
+
+# set decomp2dbg
+RUN git clone https://github.com/qwerty-po/decomp2dbg.git && cd decomp2dbg && \
+    pip3 install . --break-system-packages && cp d2d.py ~/.d2d.py
+RUN echo "source ~/.d2d.py" >> ~/.gdbinit
+RUN cd ~/ && rm -rf decomp2dbg
 
 # hold infinite
 ENTRYPOINT ["tail", "-f", "/dev/null"]

@@ -6,10 +6,7 @@ services:
     volumes:
       - /home/qwerty/ctf:/home/qwerty/ctf
 
-    ports:
-      - "24022:22"
-      - "24080:80"
-      - "24443:443"
+    network_mode: "host"
 
     privileged: true 
 
@@ -22,10 +19,7 @@ services:
     volumes:
       - /home/qwerty/ctf:/home/qwerty/ctf
 
-    ports:
-      - "22022:22"
-      - "22080:80"
-      - "22443:443"
+    network_mode: "host"
 
     privileged: true 
 
