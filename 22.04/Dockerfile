@@ -73,6 +73,9 @@ USER qwerty
 # work at home folder
 WORKDIR /home/qwerty
 
+# for cold cache
+ADD https://api.github.com/repos/qwerty-po/decomp2dbg/git/refs/heads/main version.json
+
 # set decomp2dbg
 RUN git clone https://github.com/qwerty-po/decomp2dbg.git && cd decomp2dbg && \
     pip3 install . --break-system-packages && cp d2d.py ~/.d2d.py
